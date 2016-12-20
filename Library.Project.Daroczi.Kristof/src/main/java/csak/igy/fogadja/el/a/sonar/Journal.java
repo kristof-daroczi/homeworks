@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.library_project.library;
+package csak.igy.fogadja.el.a.sonar;
 
 import java.util.GregorianCalendar;
 
@@ -11,14 +11,13 @@ import java.util.GregorianCalendar;
  *
  * @author Krisz
  */
-public class Book extends Document {
-
-    public Book(String name, GregorianCalendar date, int pages, String author, boolean isBorrowed) {
+public class Journal extends Document {
+  
+    public Journal(String name, GregorianCalendar date, int pages, String author, boolean isBorrowed) {
         super(name, date, pages, author, isBorrowed);
     }
-
+  
     
-
-   
-
+  
+    
 }

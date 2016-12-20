@@ -3,18 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.library_project.library;
+package csak.igy.fogadja.el.a.sonar;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
  * @author Krisz
  */
-abstract public class Document {
+ public abstract class Document {
 
     private String name;
     private GregorianCalendar date;
@@ -80,6 +81,7 @@ abstract public class Document {
         this.isBorrowed = isBorrowed;
     }
 
+   
     @Override
     public String toString() {
         return "Document{" + "name=" + name + ", date=" + date.get(Calendar.YEAR) + "." + date.get(Calendar.MONTH) + "." + date.get(Calendar.DAY_OF_MONTH) + ", pages=" + pages + ", author=" + author + ", isBorrowed=" + isBorrowed + '}';

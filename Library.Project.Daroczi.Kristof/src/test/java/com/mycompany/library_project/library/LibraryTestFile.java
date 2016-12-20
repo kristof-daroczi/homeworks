@@ -5,6 +5,10 @@
  */
 package com.mycompany.library_project.library;
 
+import csak.igy.fogadja.el.a.sonar.LibraryDiary;
+import csak.igy.fogadja.el.a.sonar.Book;
+import csak.igy.fogadja.el.a.sonar.Journal;
+import csak.igy.fogadja.el.a.sonar.BookIsBorrowedException;
 import java.util.GregorianCalendar;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.After;
@@ -28,7 +32,7 @@ public class LibraryTestFile {
 
     @Before
     public void init() {
-        instance = LibraryDiary.getInstance(); //not working?
+        instance = LibraryDiary.getInstance(); 
     }
 
     @Test

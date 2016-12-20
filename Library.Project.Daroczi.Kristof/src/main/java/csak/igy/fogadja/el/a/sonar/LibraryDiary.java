@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.library_project.library;
+package csak.igy.fogadja.el.a.sonar;
 
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -20,7 +20,7 @@ public class LibraryDiary {
 
     private static final Logger LOGGER = Logger.getLogger(LibraryDiary.class.getName());
     private Map<Document, List<LibraryLog>> logs;
-    private static LibraryDiary INSTANCE;
+    private static LibraryDiary iNSTANCE; //sonar
 
     private LibraryDiary() {
         logs = new HashMap<>();
@@ -36,10 +36,10 @@ public class LibraryDiary {
 
 
     public static LibraryDiary getInstance() {
-        if (INSTANCE == null) {
-            INSTANCE = new LibraryDiary();
+        if (iNSTANCE == null) {
+            iNSTANCE = new LibraryDiary();
         }
-        return INSTANCE;
+        return iNSTANCE;
     }
 
     public void addBorrow(Document doc, String name, GregorianCalendar bdate, GregorianCalendar rdate) {
