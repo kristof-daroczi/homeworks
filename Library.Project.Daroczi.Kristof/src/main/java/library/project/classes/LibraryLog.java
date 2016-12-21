@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package csak.igy.fogadja.el.a.sonar;
+package library.project.classes;
 
 import java.util.GregorianCalendar;
 

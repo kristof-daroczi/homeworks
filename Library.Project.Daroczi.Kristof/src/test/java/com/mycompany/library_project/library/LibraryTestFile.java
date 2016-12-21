@@ -5,10 +5,10 @@
  */
 package com.mycompany.library_project.library;
 
-import csak.igy.fogadja.el.a.sonar.LibraryDiary;
-import csak.igy.fogadja.el.a.sonar.Book;
-import csak.igy.fogadja.el.a.sonar.Journal;
-import csak.igy.fogadja.el.a.sonar.BookIsBorrowedException;
+import library.project.classes.LibraryDiary;
+import library.project.classes.Book;
+import library.project.classes.Journal;
+import library.project.classes.BookIsBorrowedException;
 import java.util.GregorianCalendar;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.After;
