@@ -5,10 +5,10 @@
  */
 package com.mycompany.library_project.library;
 
-import library.project.classes.LibraryDiary;
-import library.project.classes.Book;
-import library.project.classes.Journal;
-import library.project.classes.BookIsBorrowedException;
+import com.mycompany.library.project.classes.LibraryDiary;
+import com.mycompany.library.project.classes.Book;
+import com.mycompany.library.project.classes.Journal;
+import com.mycompany.library.project.classes.BookIsBorrowedException;
 import java.util.GregorianCalendar;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.After;
