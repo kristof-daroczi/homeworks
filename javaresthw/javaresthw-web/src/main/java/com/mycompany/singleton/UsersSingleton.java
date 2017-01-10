@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.singleton;
 
 import com.mycompany.dto.UserEntity;
@@ -30,7 +25,7 @@ public enum UsersSingleton implements Serializable {
         return users.get(id);
     }
 
-    public UserEntity addUUID(UserEntity user) {
+    public UserEntity addUUIDandAddtoMap(UserEntity user) {
         String randomUUID = UUID.randomUUID().toString();
         user.setId(randomUUID);
         users.put(user.getId(), user);

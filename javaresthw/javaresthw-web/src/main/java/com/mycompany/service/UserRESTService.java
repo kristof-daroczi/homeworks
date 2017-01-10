@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.service;
 
 import com.mycompany.dto.UserEntity;
@@ -34,7 +29,7 @@ public class UserRESTService {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public UserEntity addUUID(UserEntity user) {
-        return UsersSingleton.INSTANCE.addUUID(user);
+        return UsersSingleton.INSTANCE.addUUIDandAddtoMap(user);
     }
 
     @GET

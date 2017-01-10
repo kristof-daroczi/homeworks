@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.config;
 
 import com.mycompany.service.UserRESTService;
@@ -31,12 +26,5 @@ public class ApplicationConfig extends Application {
         return classes;
     }
 
-    /**
-     * Do not modify addRestResourceClasses() method. It is automatically
-     * populated with all resources defined in the project. If required, comment
-     * out calling this method in getClasses().
-     *
-     * private void addRestResourceClasses(Set<Class<?>> resources) {
-     * resources.add(com.mycompany.service.UserRESTService.class); }
-     */
+  
 }
