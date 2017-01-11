@@ -1,5 +1,5 @@
 
-package com.codingmentor.entities;
+package xyz.codingmentor.firsteehomework.entities;
 
 /**
  *

@@ -1,9 +1,9 @@
 
-package com.codingmentor.constraints;
+package xyz.codingmentor.firsteehomework.constraints;
 
-import com.codingmentor.entities.DeviceEntity;
-import com.codingmentor.entities.ManufacturerEnum;
-import com.codingmentor.entities.MyColorEnum;
+import xyz.codingmentor.firsteehomework.entities.DeviceEntity;
+import xyz.codingmentor.firsteehomework.entities.ManufacturerEnum;
+import xyz.codingmentor.firsteehomework.entities.MyColorEnum;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 

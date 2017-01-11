@@ -1,5 +1,5 @@
 
-package com.codingmentor.constraints;
+package xyz.codingmentor.firsteehomework.constraints;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -13,16 +13,14 @@ import javax.validation.Payload;
  *
  * @author Krisz
  */
-@Constraint(validatedBy = ManufacturerExaminerValidator.class)
+@Constraint(validatedBy = NameExaminerValidator.class)
 @Target({ElementType.TYPE,ElementType.FIELD,ElementType.METHOD,ElementType.ANNOTATION_TYPE})
 @Retention(RUNTIME)
 @Documented
-public @interface ManufacturerExaminer {
-
-    String message() default "{ManufacturerExaminer.message}";
+public @interface NameExaminer {
+     String message() default "{NameExaminer.message}";
 
     Class<?>[] groups() default {};
 
     Class<? extends Payload>[] payload() default {};
-
 }

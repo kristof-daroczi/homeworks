@@ -1,7 +1,7 @@
-package com.codingmentor.entities;
+package xyz.codingmentor.firsteehomework.entities;
 
-import com.codingmentor.constraints.BirthdateExaminer;
-import com.codingmentor.constraints.NameExaminer;
+import xyz.codingmentor.firsteehomework.constraints.BirthdateExaminer;
+import xyz.codingmentor.firsteehomework.constraints.NameExaminer;
 import java.util.Date;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;

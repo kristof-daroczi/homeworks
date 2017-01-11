@@ -1,6 +1,6 @@
-package com.codingmentor.constraints;
+package xyz.codingmentor.firsteehomework.constraints;
 
-import com.codingmentor.entities.UserEntity;
+import xyz.codingmentor.firsteehomework.entities.UserEntity;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 

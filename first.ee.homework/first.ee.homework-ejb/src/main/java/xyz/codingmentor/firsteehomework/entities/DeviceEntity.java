@@ -1,6 +1,6 @@
-package com.codingmentor.entities;
+package xyz.codingmentor.firsteehomework.entities;
 
-import com.codingmentor.constraints.ManufacturerExaminer;
+import xyz.codingmentor.firsteehomework.constraints.ManufacturerExaminer;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

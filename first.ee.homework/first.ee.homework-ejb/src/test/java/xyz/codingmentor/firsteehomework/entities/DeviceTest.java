@@ -1,10 +1,10 @@
 
-package com.codingmentor.entities;
+package xyz.codingmentor.firsteehomework.entities;
 
-import com.codingmentor.entities.ManufacturerEnum;
-import com.codingmentor.entities.DeviceEntity;
-import com.codingmentor.entities.MyColorEnum;
-import com.codingmentor.constraints.ManufacturerExaminerValidator;
+import xyz.codingmentor.firsteehomework.entities.ManufacturerEnum;
+import xyz.codingmentor.firsteehomework.entities.DeviceEntity;
+import xyz.codingmentor.firsteehomework.entities.MyColorEnum;
+import xyz.codingmentor.firsteehomework.constraints.ManufacturerExaminerValidator;
 import java.util.Set;
 import java.util.UUID;
 import javax.faces.validator.Validator;

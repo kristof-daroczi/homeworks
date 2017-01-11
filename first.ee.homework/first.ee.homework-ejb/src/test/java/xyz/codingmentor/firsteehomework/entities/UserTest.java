@@ -1,6 +1,6 @@
-package com.codingmentor.entities;
+package xyz.codingmentor.firsteehomework.entities;
 
-import com.codingmentor.entities.UserEntity;
+import xyz.codingmentor.firsteehomework.entities.UserEntity;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
