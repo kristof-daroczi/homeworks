@@ -1,4 +1,3 @@
-
 package xyz.codingmentor.firsteehomework.constraints;
 
 import xyz.codingmentor.firsteehomework.entities.UserEntity;
@@ -13,7 +12,7 @@ public class BirthdateExaminerValidator implements ConstraintValidator<Birthdate
 
     @Override
     public void initialize(BirthdateExaminer constraintAnnotation) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //empty on purpose 
     }
 
     @Override
@@ -21,7 +20,7 @@ public class BirthdateExaminerValidator implements ConstraintValidator<Birthdate
         if (value.getDateOfBirth() != null) {
             return value.getDateOfBirth().before(value.getRegistrationDate());
         }
-        return false;
+        return true;
     }
 
 }

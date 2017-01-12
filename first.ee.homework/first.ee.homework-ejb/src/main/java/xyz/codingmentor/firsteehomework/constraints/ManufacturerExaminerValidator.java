@@ -1,4 +1,3 @@
-
 package xyz.codingmentor.firsteehomework.constraints;
 
 import xyz.codingmentor.firsteehomework.entities.DeviceEntity;
@@ -15,19 +14,18 @@ public class ManufacturerExaminerValidator implements ConstraintValidator<Manufa
 
     @Override
     public void initialize(ManufacturerExaminer constraintAnnotation) {
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //empty on purpose
     }
 
     @Override
     public boolean isValid(DeviceEntity value, ConstraintValidatorContext context) {
         if (value.getManufacturer() == ManufacturerEnum.APPLE) {
-            return value.getColor() == MyColorEnum.BLACK || value.getColor()==MyColorEnum.WHITE;
+            return value.getColor() == MyColorEnum.BLACK || value.getColor() == MyColorEnum.WHITE;
         }
 
         if (value.getManufacturer() == ManufacturerEnum.SAMSUNG) {
             return value.getColor() != MyColorEnum.GREEN;
         }
-        
         return true;
     }
 

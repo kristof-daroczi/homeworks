@@ -1,4 +1,3 @@
-
 package xyz.codingmentor.firsteehomework.constraints;
 
 import java.lang.annotation.Documented;
@@ -14,7 +13,10 @@ import javax.validation.Payload;
  * @author Krisz
  */
 @Constraint(validatedBy = ManufacturerExaminerValidator.class)
-@Target({ElementType.TYPE,ElementType.FIELD,ElementType.METHOD,ElementType.ANNOTATION_TYPE})
+@Target({ElementType.TYPE,
+    ElementType.FIELD,
+    ElementType.METHOD,
+    ElementType.ANNOTATION_TYPE})
 @Retention(RUNTIME)
 @Documented
 public @interface ManufacturerExaminer {

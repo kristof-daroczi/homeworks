@@ -11,7 +11,7 @@
         <module>first.ee.homework-web</module>
         <module>first.ee.homework-ejb</module>
     </modules>
-   <profiles>
+    <profiles>
         <profile>
             <id>sonar</id>
             <activation>

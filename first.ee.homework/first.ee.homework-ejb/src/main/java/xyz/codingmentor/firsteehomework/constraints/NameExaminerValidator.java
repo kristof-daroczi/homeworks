@@ -9,21 +9,18 @@ import javax.validation.ConstraintValidatorContext;
  * @author Krisz
  */
 public class NameExaminerValidator implements ConstraintValidator<NameExaminer, UserEntity> {
-    
+
     @Override
     public void initialize(NameExaminer constraintAnnotation) {
-        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // empty on purpose
     }
-    
+
     @Override
     public boolean isValid(UserEntity value, ConstraintValidatorContext context) {
-        if (value.getFirstname() == null && value.getLastname() == null) {
-            return true;
-        }
-        if (value.getFirstname() != null && value.getLastname() != null) {
-            return true;
-        }
-        return false;
+        boolean isEmpty = (value.getFirstname() == null) && (value.getLastname() == null);
+        boolean isNotEmpty = (value.getFirstname() != null) && (value.getLastname() != null);
+
+        return isEmpty || isNotEmpty;
     }
-    
+
 }

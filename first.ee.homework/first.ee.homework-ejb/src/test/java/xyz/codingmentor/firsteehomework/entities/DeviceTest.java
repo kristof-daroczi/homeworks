@@ -4,10 +4,8 @@ package xyz.codingmentor.firsteehomework.entities;
 import xyz.codingmentor.firsteehomework.entities.ManufacturerEnum;
 import xyz.codingmentor.firsteehomework.entities.DeviceEntity;
 import xyz.codingmentor.firsteehomework.entities.MyColorEnum;
-import xyz.codingmentor.firsteehomework.constraints.ManufacturerExaminerValidator;
 import java.util.Set;
 import java.util.UUID;
-import javax.faces.validator.Validator;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.ValidatorFactory;
@@ -179,8 +177,9 @@ public class DeviceTest {
         d1.setType("sometype");
         d1.setManufacturer(ManufacturerEnum.APPLE);
         d1.setColor(MyColorEnum.BLUE);
-        Set<ConstraintViolation<DeviceEntity>> violation = validator.validate(d1);
-        assertEquals(1, violation.size());
+        Set<ConstraintViolation<DeviceEntity>> violations = validator.validate(d1);
+        assertEquals(1, violations.size());
+        assertEquals("{ManufacturerExaminer.message}", violations.iterator().next().getMessageTemplate());
     }
 
     @Test
@@ -195,8 +194,46 @@ public class DeviceTest {
         d1.setColor(MyColorEnum.BLACK);
         Set<ConstraintViolation<DeviceEntity>> violation = validator.validate(d1);
         assertEquals(0, violation.size());
-        d1.setColor(MyColorEnum.WHITE);
-        Set<ConstraintViolation<DeviceEntity>> violation2 = validator.validate(d1);
-        assertEquals(0, violation2.size());
     }
+     @Test
+    public void shouldNotRaiseConstraintViolationCauseIfAppleColor2() {
+        String randomUUID = UUID.randomUUID().toString();
+        DeviceEntity d1 = new DeviceEntity();
+        d1.setId(randomUUID);
+        d1.setCount(10);
+        d1.setPrice(10000);
+        d1.setType("sometype");
+        d1.setManufacturer(ManufacturerEnum.APPLE);
+        d1.setColor(MyColorEnum.WHITE);
+        Set<ConstraintViolation<DeviceEntity>> violation = validator.validate(d1);
+        assertEquals(0, violation.size());
+    }
+    @Test
+    public void shouldRaiseConstraintViolationCauseIfSamsungColor() {
+        String randomUUID = UUID.randomUUID().toString();
+        DeviceEntity d1 = new DeviceEntity();
+        d1.setId(randomUUID);
+        d1.setCount(10);
+        d1.setPrice(10000);
+        d1.setType("sometype");
+        d1.setManufacturer(ManufacturerEnum.SAMSUNG);
+        d1.setColor(MyColorEnum.GREEN);
+        Set<ConstraintViolation<DeviceEntity>> violation = validator.validate(d1);
+        assertEquals(1, violation.size());
+        assertEquals("{ManufacturerExaminer.message}", violation.iterator().next().getMessageTemplate());
+    }
+    @Test
+    public void shouldNotRaiseConstraintViolationCauseIfSamsungColor() {
+        String randomUUID = UUID.randomUUID().toString();
+        DeviceEntity d1 = new DeviceEntity();
+        d1.setId(randomUUID);
+        d1.setCount(10);
+        d1.setPrice(10000);
+        d1.setType("sometype");
+        d1.setManufacturer(ManufacturerEnum.SAMSUNG);
+        d1.setColor(MyColorEnum.BLUE);
+        Set<ConstraintViolation<DeviceEntity>> violation = validator.validate(d1);
+        assertEquals(0, violation.size());
+    }
+    
 }

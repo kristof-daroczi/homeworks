@@ -12,13 +12,16 @@ import javax.validation.Payload;
  *
  * @author Krisz
  */
-
 @Constraint(validatedBy = BirthdateExaminerValidator.class)
-@Target({ElementType.TYPE,ElementType.FIELD,ElementType.METHOD,ElementType.ANNOTATION_TYPE})
+@Target({ElementType.TYPE,
+    ElementType.FIELD,
+    ElementType.METHOD,
+    ElementType.ANNOTATION_TYPE})
 @Retention(RUNTIME)
 @Documented
 public @interface BirthdateExaminer {
-     String message() default "{BirthdayExaminer.message}";
+
+    String message() default "{BirthdateExaminer.message}";
 
     Class<?>[] groups() default {};
 

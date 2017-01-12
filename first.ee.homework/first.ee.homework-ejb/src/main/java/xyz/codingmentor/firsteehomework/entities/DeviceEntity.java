@@ -1,5 +1,6 @@
 package xyz.codingmentor.firsteehomework.entities;
 
+import java.util.Objects;
 import xyz.codingmentor.firsteehomework.constraints.ManufacturerExaminer;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -9,13 +10,14 @@ import javax.validation.constraints.Size;
  *
  * @author Krisz
  */
-    @ManufacturerExaminer
+@ManufacturerExaminer
 public class DeviceEntity {
+
     @NotNull
     @Size(min = 36, max = 36)
     private String id;
 
-    @NotNull  
+    @NotNull
     private ManufacturerEnum manufacturer;
 
     @NotNull
@@ -42,10 +44,9 @@ public class DeviceEntity {
         this.count = count;
     }
 
-    DeviceEntity() {
-
+    public DeviceEntity() {
+        //empty on purpose
     }
-
 
     public MyColorEnum getColor() {
         return color;
@@ -93,6 +94,51 @@ public class DeviceEntity {
 
     public void setCount(Integer count) {
         this.count = count;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.manufacturer);
+        hash = 97 * hash + Objects.hashCode(this.type);
+        hash = 97 * hash + this.price;
+        hash = 97 * hash + Objects.hashCode(this.color);
+        hash = 97 * hash + Objects.hashCode(this.count);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DeviceEntity other = (DeviceEntity) obj;
+        if (this.price != other.price) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.type, other.type)) {
+            return false;
+        }
+        if (this.manufacturer != other.manufacturer) {
+            return false;
+        }
+        if (this.color != other.color) {
+            return false;
+        }
+        if (!Objects.equals(this.count, other.count)) {
+            return false;
+        }
+        return true;
     }
 
 }
