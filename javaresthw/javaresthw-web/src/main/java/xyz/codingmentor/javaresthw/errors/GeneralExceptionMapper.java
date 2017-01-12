@@ -1,4 +1,4 @@
-package com.mycompany.errors;
+package xyz.codingmentor.javaresthw.errors;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,7 +19,9 @@ public class GeneralExceptionMapper implements ExceptionMapper<Throwable> {
     @Override
     public Response toResponse(Throwable exception) {
         logger.log(Level.SEVERE, "General Exception", exception);
-        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(new ErrorDTO(exception.getMessage() + " - " + exception.getCause())).type(MediaType.APPLICATION_JSON).build();
+        return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
+                .entity(new ErrorDTO(exception.getMessage() + " - " + exception.getCause()))
+                .type(MediaType.APPLICATION_JSON).build();
 
     }
 

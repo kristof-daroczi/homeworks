@@ -1,6 +1,6 @@
-package com.mycompany.config;
+package xyz.codingmentor.javaresthw.config;
 
-import com.mycompany.service.UserRESTService;
+import xyz.codingmentor.javaresthw.service.UserRESTService;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;

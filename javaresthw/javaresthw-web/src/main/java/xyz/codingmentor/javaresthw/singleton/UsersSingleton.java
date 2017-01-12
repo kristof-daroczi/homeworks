@@ -1,6 +1,6 @@
-package com.mycompany.singleton;
+package xyz.codingmentor.javaresthw.singleton;
 
-import com.mycompany.dto.UserEntity;
+import xyz.codingmentor.javaresthw.dto.UserEntity;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashMap;

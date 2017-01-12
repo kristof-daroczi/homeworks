@@ -1,4 +1,4 @@
-package com.mycompany.errors;
+package xyz.codingmentor.javaresthw.errors;
 
 /**
  *

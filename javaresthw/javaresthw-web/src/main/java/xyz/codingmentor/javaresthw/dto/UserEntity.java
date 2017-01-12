@@ -1,4 +1,4 @@
-package com.mycompany.dto;
+package xyz.codingmentor.javaresthw.dto;
 
 import java.io.Serializable;
 import java.util.Objects;
