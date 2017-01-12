@@ -21,28 +21,36 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 public class UserRESTService {
 
-    //http://localhost:8080/javaresthw-web/rest/users
+    /**
+     * http://localhost:8080/javaresthw-web/rest/users
+     */
     @GET
     public Collection<UserEntity> getUsers() {
         return UsersSingleton.INSTANCE.getUsers();
     }
 
-    //http://localhost:8080/javaresthw-web/rest/users
-    //JSON: testJSON.json in the root map
+    /**
+     * http://localhost:8080/javaresthw-web/rest/users 
+     * JSON: testJSON.json in the root directory
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public UserEntity addUUIDandAddtoMap(UserEntity user) {
         return UsersSingleton.INSTANCE.addUUIDandAddtoMap(user);
     }
 
-    //http://localhost:8080/javaresthw-web/rest/users/{id}
+    /**
+     * http://localhost:8080/javaresthw-web/rest/users/{id}
+     */
     @GET
     @Path("/{id}")
     public UserEntity getUserbyID(@PathParam("id") String id) {
         return UsersSingleton.INSTANCE.findUserbyID(id);
     }
 
-    //http://localhost:8080/javaresthw-web/rest/users/{id}
+    /**
+     * http://localhost:8080/javaresthw-web/rest/users/{id} 
+     */
     @PUT
     @Path("/{id}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -54,7 +62,9 @@ public class UserRESTService {
         return UsersSingleton.INSTANCE.updateUser(user);
     }
 
-    //http://localhost:8080/javaresthw-web/rest/users/{id}
+    /**
+     * http://localhost:8080/javaresthw-web/rest/users/{id} 
+     */
     @DELETE
     @Path("/{id}")
     public UserEntity deleteUserbyID(@PathParam("id") String id) {
