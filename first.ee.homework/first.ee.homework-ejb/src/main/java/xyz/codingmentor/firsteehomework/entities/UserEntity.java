@@ -294,7 +294,7 @@ public class UserEntity {
             return this;
         }
 
-        public Builder SexEnum(SexEnum sex) {
+        public Builder sexEnum(SexEnum sex) {
             this.sex = sex;
             return this;
         }

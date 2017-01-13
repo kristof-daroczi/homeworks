@@ -1,5 +1,6 @@
-package xyz.codingmentor.firsteehomework.DBs;
+package xyz.codingmentor.firsteehomework.dbs;
 
+import xyz.codingmentor.firsteehomework.dbs.DeviceDB;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;

@@ -1,0 +1,52 @@
+[
+{   "manufacturer": "HTC",
+	"type": "Desire",
+	"price": "50000",
+	"color": "BLACK"
+},
+{   "manufacturer": "HTC",
+	"type": "as",
+	"price": "50000",
+	"color": "BLACK"
+},
+{   "manufacturer": "SAMSUNG",
+	"type": "ert",
+	"price": "50000",
+	"color": "BLACK"
+},
+{   "manufacturer": "APPLE",
+	"type": "ertsdf",
+	"price": "50000",
+	"color": "BLACK"
+},
+{   "manufacturer": "APPLE",
+	"type": "dfh",
+	"price": "50000",
+	"color": "BLACK"
+},
+{   "manufacturer": "SAMSUNG",
+	"type": "hjkhj",
+	"price": "50000",
+	"color": "BLACK"
+},
+{   "manufacturer": "ONEPLUS",
+	"type": "asda",
+	"price": "50000",
+	"color": "BLACK"
+},
+{   "manufacturer": "ONEPLUS",
+	"type": "ghjg",
+	"price": "50000",
+	"color": "BLACK"
+},
+{   "manufacturer": "SAMSUNG",
+	"type": "zuiz",
+	"price": "50000",
+	"color": "BLACK"
+},
+{   "manufacturer": "HTC",
+	"type": "bnmb",
+	"price": "50000",
+	"color": "BLACK"
+}
+]

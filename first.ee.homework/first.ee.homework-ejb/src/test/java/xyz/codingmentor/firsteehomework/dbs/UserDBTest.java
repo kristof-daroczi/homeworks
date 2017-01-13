@@ -1,5 +1,6 @@
-package xyz.codingmentor.firsteehomework.DBs;
+package xyz.codingmentor.firsteehomework.dbs;
 
+import xyz.codingmentor.firsteehomework.dbs.UserDB;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -31,7 +32,7 @@ public class UserDBTest {
         user1 = new UserEntity.Builder()
                 .firstname("John")
                 .lastname("Doe")
-                .SexEnum(SexEnum.MALE)
+                .sexEnum(SexEnum.MALE)
                 .address("01234example")
                 .password("Password3")
                 .email("kiskutya@gmail.com")
@@ -84,7 +85,7 @@ public class UserDBTest {
         UserEntity user2 = new UserEntity.Builder()
                 .firstname("Virág")
                 .lastname("Kiss")
-                .SexEnum(SexEnum.FEMALE)
+                .sexEnum(SexEnum.FEMALE)
                 .address("01234example")
                 .password("Password3")
                 .email("kiskutya34@gmail.com")

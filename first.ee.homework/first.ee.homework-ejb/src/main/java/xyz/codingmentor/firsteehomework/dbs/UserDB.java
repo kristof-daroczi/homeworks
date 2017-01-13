@@ -1,4 +1,4 @@
-package xyz.codingmentor.firsteehomework.DBs;
+package xyz.codingmentor.firsteehomework.dbs;
 
 import java.util.Date;
 import java.util.HashMap;
