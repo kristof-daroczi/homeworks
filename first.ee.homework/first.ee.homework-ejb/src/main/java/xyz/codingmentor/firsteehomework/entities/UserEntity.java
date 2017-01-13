@@ -244,6 +244,7 @@ public class UserEntity {
 
     }
 
+
     public static class Builder {
 
         private String username;
@@ -294,7 +295,9 @@ public class UserEntity {
             return this;
         }
 
+
         public Builder sexEnum(SexEnum sex) {
+
             this.sex = sex;
             return this;
         }
