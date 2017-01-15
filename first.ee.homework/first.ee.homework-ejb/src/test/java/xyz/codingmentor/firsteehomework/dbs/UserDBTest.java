@@ -45,7 +45,7 @@ public class UserDBTest {
     @Test
     public void addUserTest() {
         userDB.addUser(user1);
-        assertEquals(user1, userDB.getUser("paksi"));
+        assertEquals(userDB.getUser("paksi"),user1);
     }
 
     @Test

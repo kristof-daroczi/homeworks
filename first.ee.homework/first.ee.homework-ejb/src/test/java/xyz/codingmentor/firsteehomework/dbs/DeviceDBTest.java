@@ -33,7 +33,7 @@ public class DeviceDBTest {
     @Test
     public void addDeviceTest() {
         deviceDB.addDevice(device1);
-        assertEquals(device1, deviceDB.getDevice(device1.getId()));
+        assertEquals(deviceDB.getDevice(device1.getId()), device1);
     }
 
     @Test
