@@ -47,9 +47,11 @@ public class Main {
 
         try {
             getDevicesFromJSON();
+            getUsersFromJSON();
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
 }

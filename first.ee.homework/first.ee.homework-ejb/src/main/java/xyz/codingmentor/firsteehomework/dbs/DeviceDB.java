@@ -15,10 +15,6 @@ public class DeviceDB {
 
     private final Map<String, DeviceEntity> devices = new HashMap<>();
 
-    public Map<String, DeviceEntity> getDevicesMap() {
-        return devices;
-    }
-
     public DeviceEntity addDevice(DeviceEntity newDevice) {
         String randomUUID = UUID.randomUUID().toString();
         newDevice.setCount(0);

@@ -1,6 +1,5 @@
 package xyz.codingmentor.firsteehomework.dbs;
 
-import xyz.codingmentor.firsteehomework.dbs.DeviceDB;
 import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -18,8 +17,8 @@ public class DeviceDBTest {
     public DeviceDBTest() {
     }
 
-    DeviceDB deviceDB;
-    DeviceEntity device1;
+    private DeviceDB deviceDB;
+    private DeviceEntity device1;
 
     @Before
     public void init() {
@@ -49,14 +48,16 @@ public class DeviceDBTest {
         deviceDB.addDevice(device1);
         device1.setType("Ascend");
         DeviceEntity modifiedDevice = deviceDB.editDevice(device1);
-        assertEquals(modifiedDevice.getType(), "Ascend");
+        assertEquals("Ascend", modifiedDevice.getType());
     }
 
     @Test
     public void deleteDeviceTest() {
         deviceDB.addDevice(device1);
-        DeviceEntity deletedDevice = deviceDB.deleteDevice(device1);
-        assertEquals(deletedDevice, device1);
+        deviceDB.deleteDevice(device1);
+        List<DeviceEntity> allDevices = deviceDB.getAllDevice();
+        boolean isContaining = allDevices.contains(device1);
+        assertFalse(isContaining);
     }
 
     @Test
@@ -69,7 +70,7 @@ public class DeviceDBTest {
 
         deviceDB.addDevice(device1);
         deviceDB.addDevice(device2);
-        List<DeviceEntity> allDevices=deviceDB.getAllDevice();
-        assertEquals(allDevices.size(),deviceDB.getDevicesMap().size());
+        List<DeviceEntity> allDevices = deviceDB.getAllDevice();
+        assertEquals(2, allDevices.size());
     }
 }

@@ -1,6 +1,5 @@
 package xyz.codingmentor.firsteehomework.dbs;
 
-import xyz.codingmentor.firsteehomework.dbs.UserDB;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -19,8 +18,8 @@ public class UserDBTest {
     public UserDBTest() {
     }
 
-    UserDB userDB;
-    UserEntity user1;
+    private UserDB userDB;
+    private UserEntity user1;
 
     @Before
     public void setUp() {
@@ -53,14 +52,14 @@ public class UserDBTest {
     public void getUserTest() {
         userDB.addUser(user1);
         UserEntity returnedUser = userDB.getUser(user1.getUsername());
-        assertEquals(returnedUser.getUsername(), "paksi");
+        assertEquals("paksi", returnedUser.getUsername());
     }
 
     @Test
     public void authenticationTest() {
         userDB.addUser(user1);
         boolean isAuthenticated = userDB.authenticate("paksi", "Password3");
-        assertEquals(isAuthenticated, true);
+        assertTrue(isAuthenticated);
     }
 
     @Test
@@ -68,14 +67,16 @@ public class UserDBTest {
         userDB.addUser(user1);
         user1.setEmail("urlele@gmail.com");
         UserEntity modifiedUser = userDB.modifyUser(user1);
-        assertEquals(modifiedUser.getEmail(), "urlele@gmail.com");
+        assertEquals("urlele@gmail.com", modifiedUser.getEmail());
     }
 
     @Test
     public void deleteUserTest() {
         userDB.addUser(user1);
-        UserEntity deletedUser = userDB.deleteUser(user1);
-        assertEquals(deletedUser, user1);
+        userDB.deleteUser(user1);
+        List<UserEntity> userList = userDB.getAllUsers();
+        boolean isContaining = userList.contains(user1);
+        assertFalse(isContaining);
     }
 
     @Test
@@ -99,8 +100,8 @@ public class UserDBTest {
         userDB.addUser(user1);
         userDB.addUser(user2);
         List<UserEntity> userList = userDB.getAllUsers();
-        int expectedsize = userDB.getUsersMap().size();
-        assertEquals(expectedsize, userList.size());
+
+        assertEquals(2, userList.size());
     }
 
 }

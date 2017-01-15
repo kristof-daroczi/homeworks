@@ -1,8 +1,8 @@
 package xyz.codingmentor.firsteehomework.dbs;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import xyz.codingmentor.firsteehomework.entities.UserEntity;
@@ -14,10 +14,6 @@ import xyz.codingmentor.firsteehomework.entities.UserEntity;
 public class UserDB {
 
     private final Map<String, UserEntity> users = new HashMap<>();
-
-    public Map<String, UserEntity> getUsersMap() {
-        return users;
-    }
 
     public UserEntity addUser(UserEntity newuser) {
         Date now = new Date();
@@ -47,7 +43,7 @@ public class UserDB {
     }
 
     public List<UserEntity> getAllUsers() {
-        List<UserEntity> allUsers = new LinkedList<>();
+        List<UserEntity> allUsers = new ArrayList<>();
         allUsers.addAll(users.values());
         return allUsers;
     }
