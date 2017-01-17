@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import xyz.codingmentor.firsteehomework.interceptors.BeanValidation;
 import xyz.codingmentor.firsteehomework.entities.DeviceEntity;
 
 /**
@@ -22,20 +23,20 @@ public class DeviceDB {
         devices.put(newDevice.getId(), newDevice);
         return devices.get(newDevice.getId());
     }
-
+    @BeanValidation
     public DeviceEntity getDevice(String id) {
         return devices.get(id);
     }
-
+    @BeanValidation
     public DeviceEntity editDevice(DeviceEntity device) {
         devices.put(device.getId(), device);
         return devices.get(device.getId());
     }
-
+    @BeanValidation
     public DeviceEntity deleteDevice(DeviceEntity device) {
         return devices.remove(device.getId());
     }
-
+    @BeanValidation
     public List<DeviceEntity> getAllDevice() {
         List<DeviceEntity> allDevices = new LinkedList<>();
         allDevices.addAll(devices.values());

@@ -5,12 +5,14 @@ import xyz.codingmentor.firsteehomework.constraints.ManufacturerExaminer;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import xyz.codingmentor.firsteehomework.annotations.BeanConnector;
 
 /**
  *
  * @author Krisz
  */
 @ManufacturerExaminer
+@BeanConnector
 public class DeviceEntity {
 
     @NotNull
