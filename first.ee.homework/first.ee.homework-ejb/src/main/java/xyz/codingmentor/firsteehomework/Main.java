@@ -15,6 +15,7 @@ import xyz.codingmentor.firsteehomework.dbs.UserDB;
 import xyz.codingmentor.firsteehomework.entities.DeviceEntity;
 import xyz.codingmentor.firsteehomework.entities.ManufacturerEnum;
 import xyz.codingmentor.firsteehomework.entities.MyColorEnum;
+import xyz.codingmentor.firsteehomework.entities.ShoppingCart;
 import xyz.codingmentor.firsteehomework.entities.UserEntity;
 
 /**
@@ -71,6 +72,7 @@ public class Main {
         badDeviceTest();
         goodUserTest();
         badUserTest();
+        shoppingCartTest();
 
         weld.shutdown();
     }
@@ -123,5 +125,23 @@ public class Main {
             LOGGER.log(Level.INFO, "User can not be modified this way!");
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, vex); //Need this line because of sonar
         }
+    }
+
+    private static void shoppingCartTest() {
+        List<DeviceEntity> devices = deviceDB.getAllDevice();
+        DeviceEntity device = new DeviceEntity();
+        for (DeviceEntity act : devices) {
+            if (act.getManufacturer() == ManufacturerEnum.APPLE) {
+                device = act;
+                break;
+            }
+        }
+        ShoppingCart cart = new ShoppingCart(deviceDB);
+        device.setCount(10);
+        cart.addDeviceToCart(device.getId(), 5);
+        cart.removeDeviceFromCart(device.getId(), 3);
+        cart.buyCart();
+        cart.removeAllCart();
+
     }
 }
