@@ -143,6 +143,6 @@ public class Main {
         cart.addDeviceToCart(device.getId(), 5);
         cart.addDeviceToCart(device.getId(), 2);
         cart.removeAllCart();
-        LOGGER.log(Level.INFO, "User can not be modified this way!");
+        
     }
 }
