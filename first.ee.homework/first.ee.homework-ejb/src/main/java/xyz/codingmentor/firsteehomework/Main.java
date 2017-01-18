@@ -67,11 +67,10 @@ public class Main {
         } catch (IOException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        goodDeviceTest();
         badDeviceTest();
-        goodUserTest();
+        goodDeviceTest();
         badUserTest();
+        goodUserTest();
         shoppingCartTest();
 
         weld.shutdown();
@@ -141,7 +140,9 @@ public class Main {
         cart.addDeviceToCart(device.getId(), 5);
         cart.removeDeviceFromCart(device.getId(), 3);
         cart.buyCart();
+        cart.addDeviceToCart(device.getId(), 5);
+        cart.addDeviceToCart(device.getId(), 2);
         cart.removeAllCart();
-
+        LOGGER.log(Level.INFO, "User can not be modified this way!");
     }
 }

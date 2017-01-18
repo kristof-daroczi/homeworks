@@ -23,7 +23,8 @@ public class ValidatorInterceptor {
 
     private static final Logger LOGGER = Logger.getLogger(ValidatorInterceptor.class.getName());
 
-    @Inject @ValidatorQualifier
+    @Inject
+    @ValidatorQualifier
     private Validator validator;
 
     @AroundInvoke
@@ -35,9 +36,14 @@ public class ValidatorInterceptor {
 
     private void validateBean(Object bean) {
         Set<ConstraintViolation<Object>> violations = validator.validate(bean);
+        String errorMessages;
         if (!violations.isEmpty()) {
-            LOGGER.log(Level.SEVERE, "Bad validation");
-            throw new ValidationException();
+            errorMessages = "Errors: ";
+            for (ConstraintViolation<Object> violation : violations) {
+                LOGGER.log(Level.INFO, "Invalid value: " + violation.getInvalidValue().toString());
+                errorMessages+="\n "+violation.getMessage();
+            }
+            throw new ValidationException(errorMessages);
         }
     }
 

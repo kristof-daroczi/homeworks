@@ -9,6 +9,9 @@ public class ValidationException extends RuntimeException {
     public ValidationException() {
         //empty on purpose
     }
-    
-    
+
+    public ValidationException(String errorMessages) {
+        super(errorMessages);
+    }
+
 }
