@@ -138,11 +138,10 @@ public class Main {
         ShoppingCart cart = new ShoppingCart(deviceDB);
         device.setCount(10);
         cart.addDeviceToCart(device.getId(), 5);
-        cart.removeDeviceFromCart(device.getId(), 3);
+        cart.removeDeviceFromCart(device.getId(), 2);
         cart.buyCart();
         cart.addDeviceToCart(device.getId(), 5);
         cart.addDeviceToCart(device.getId(), 2);
         cart.removeAllCart();
-        
     }
 }

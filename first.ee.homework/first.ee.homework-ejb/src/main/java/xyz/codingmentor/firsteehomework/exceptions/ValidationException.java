@@ -7,7 +7,7 @@ package xyz.codingmentor.firsteehomework.exceptions;
 public class ValidationException extends RuntimeException {
 
     public ValidationException() {
-        //empty on purpose
+        super();
     }
 
     public ValidationException(String errorMessages) {

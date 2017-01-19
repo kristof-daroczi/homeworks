@@ -6,7 +6,6 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import xyz.codingmentor.firsteehomework.dbs.DeviceDB;
-import xyz.codingmentor.firsteehomework.exceptions.NoSuchDeviceException;
 import xyz.codingmentor.firsteehomework.exceptions.NotEnoughQuantityException;
 import xyz.codingmentor.firsteehomework.exceptions.TooMuchQuantityException;
 
@@ -19,7 +18,7 @@ public class ShoppingCart {
     private static final Logger LOGGER = Logger.getLogger(ShoppingCart.class.getName());
 
     private int cost;
-    private final Map<String, DeviceEntity> devicesInCart;
+    private final Map<String, Integer> devicesInCart;
     private final DeviceDB deviceDB;
 
     public ShoppingCart() {
@@ -36,87 +35,48 @@ public class ShoppingCart {
 
     public void addDeviceToCart(String id, int amount) {
         DeviceEntity device = deviceDB.getDevice(id);
-        if (!devicesInCart.containsKey(id)) {
-            if (device.getCount() >= amount) {
-                int beforeCount = device.getCount();
-                device.setCount(amount);
-                devicesInCart.put(id, device);
-                
-                DeviceEntity device2 = new DeviceEntity();
-                device2.setId(id);
-                device2.setColor(device.getColor());
-                device2.setManufacturer(device.getManufacturer());
-                device2.setPrice(device.getPrice());
-                device2.setType(device.getType());
-                device2.setCount(beforeCount - amount);
-                deviceDB.editDevice(device2);
-                cost = amount * device.getPrice();
-
+        if (device.getCount() >= amount) {
+            int beforeCountDB = device.getCount();
+            if (!devicesInCart.containsKey(id)) {
+                devicesInCart.put(id, amount);
+                device.setCount(beforeCountDB - amount);
+                deviceDB.editDevice(device);
+                cost = device.getPrice() * amount;
             } else {
-                throw new NotEnoughQuantityException();
+                int beforeCount = devicesInCart.get(id);
+                devicesInCart.replace(id, beforeCount + amount);
+                device.setCount(beforeCountDB - amount);
+                deviceDB.editDevice(device);
+                cost += device.getPrice() * amount;
             }
         } else {
-            if (device.getCount() >= amount) {
-                int beforeCount = devicesInCart.get(id).getCount();
-                int deviceDBcount = device.getCount();
-                devicesInCart.get(id).setCount(beforeCount + amount);
-                
-                DeviceEntity device2 = new DeviceEntity();
-                device2.setId(id);
-                device2.setColor(device.getColor());
-                device2.setManufacturer(device.getManufacturer());
-                device2.setPrice(device.getPrice());
-                device2.setType(device.getType());
-                device2.setCount(deviceDBcount - amount);
-                deviceDB.editDevice(device2);
-                cost += amount * device.getPrice();
-            } else {
-                throw new NotEnoughQuantityException();
-            }
+            throw new NotEnoughQuantityException();
         }
+
     }
 
     public void removeDeviceFromCart(String id, int amount) {
-        if (devicesInCart.containsKey(id)) {
-            DeviceEntity device = devicesInCart.get(id);
-            int removeCost = amount * device.getPrice();
-            int beforeCount = deviceDB.getDevice(id).getCount();
-            if (device.getCount() == amount) {
-                DeviceEntity device2 = new DeviceEntity();
-                device2.setId(id);
-                device2.setColor(device.getColor());
-                device2.setManufacturer(device.getManufacturer());
-                device2.setPrice(device.getPrice());
-                device2.setType(device.getType());
-                device2.setCount(beforeCount + amount);
-                deviceDB.editDevice(device2);
-                devicesInCart.remove(id);
-                cost -= removeCost;
-            } else if (device.getCount() > amount) {
-                device.setCount(beforeCount - amount);
-                devicesInCart.replace(id, device);
-                
-                DeviceEntity device2 = new DeviceEntity();
-                device2.setId(id);
-                device2.setColor(device.getColor());
-                device2.setManufacturer(device.getManufacturer());
-                device2.setPrice(device.getPrice());
-                device2.setType(device.getType());
-                device2.setCount(beforeCount + amount);
-                deviceDB.editDevice(device2);
-                cost -= removeCost;
-            } else {
-                throw new TooMuchQuantityException();
-            }
+        DeviceEntity device = deviceDB.getDevice(id);
+        int removeCost = device.getPrice() * amount;
+        int beforeCount = devicesInCart.get(id);
+        int beforeCountDB = device.getCount();
+        if (beforeCount == amount) {
+            devicesInCart.remove(id);
+            device.setCount(beforeCountDB + amount);
+            cost -= removeCost;
+        } else if (beforeCount > amount) {
+            devicesInCart.replace(id, beforeCount - amount);
+            device.setCount(beforeCountDB + amount);
+            cost -= removeCost;
         } else {
-            throw new NoSuchDeviceException();
+            throw new TooMuchQuantityException();
         }
     }
 
     public void removeAllCart() {
-        for (Iterator<Map.Entry<String, DeviceEntity>> it = devicesInCart.entrySet().iterator(); it.hasNext();) {
-            Map.Entry<String, DeviceEntity> entry = it.next();
-            removeDeviceFromCart(entry.getKey(), entry.getValue().getCount());
+        for (Iterator<Map.Entry<String, Integer>> it = devicesInCart.entrySet().iterator(); it.hasNext();) {
+            Map.Entry<String, Integer> entry = it.next();
+            removeDeviceFromCart(entry.getKey(), entry.getValue());
         }
     }
 
@@ -125,10 +85,10 @@ public class ShoppingCart {
     }
 
     public void buyCart() {
-        for (Map.Entry<String, DeviceEntity> entry : devicesInCart.entrySet()) {
-            LOGGER.log(Level.INFO, "Device id :{0} Count: {1} Cost: {2}", new Object[]{entry.getValue().getId(), entry.getValue().getCount(), entry.getValue().getCount() * entry.getValue().getPrice()});
+        for (Map.Entry<String, Integer> entry : devicesInCart.entrySet()) {
+            LOGGER.log(Level.INFO, "Device id :{0} Count: {1}", new Object[]{entry.getKey(), entry.getValue()});
         }
-        LOGGER.log(Level.INFO, "Final cost: {0}", getCost());
+        LOGGER.log(Level.INFO, "Final cost: " + cost);
     }
 
 }
