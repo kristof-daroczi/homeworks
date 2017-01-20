@@ -40,13 +40,11 @@ public class ShoppingCart {
             if (!devicesInCart.containsKey(id)) {
                 devicesInCart.put(id, amount);
                 device.setCount(beforeCountDB - amount);
-                deviceDB.editDevice(device);
                 cost = device.getPrice() * amount;
             } else {
                 int beforeCount = devicesInCart.get(id);
                 devicesInCart.replace(id, beforeCount + amount);
                 device.setCount(beforeCountDB - amount);
-                deviceDB.editDevice(device);
                 cost += device.getPrice() * amount;
             }
         } else {
