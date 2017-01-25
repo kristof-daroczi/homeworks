@@ -207,7 +207,7 @@ public class UserEntity implements Serializable {
             return false;
         }
         final UserEntity other = (UserEntity) obj;
-        if (this.admin != other.admin) {
+        if (!Objects.equals(this.admin, other.admin)) {
             return false;
         }
         if (!Objects.equals(this.username, other.username)) {

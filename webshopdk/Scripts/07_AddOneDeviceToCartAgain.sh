@@ -1,0 +1,1 @@
+curl --verbose --write-out "\n" --request POST --cookie-jar cart-cookies.txt --cookie cart-cookies.txt http://localhost:8080/webshopdk-web/webresources/shoppingcart/add/efd00669-2cfa-49f1-88ad-13c6ae2930f2/1

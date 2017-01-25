@@ -20,19 +20,22 @@ import xyz.codingmentor.webshopdk.entities.ShoppingCart;
  *
  * @author Krisz
  */
-@Path("shoppingcart")
+@Path("/shoppingcart")
 @SessionScoped
 @Produces(MediaType.APPLICATION_JSON)
 public class CartRESTService implements Serializable {
 
     @Inject
     private ShoppingCart sCart;
+    private static final String ARGMESSAGE = "You are not logged in!";
 
     @POST
     @Path("/add/{deviceId}/{quantity}")
     public ResultDTO addToCart(@Context HttpServletRequest request, @PathParam("deviceId") String deviceId, @PathParam("quantity") Integer quantity) {
         HttpSession session = request.getSession(true);
-        checkLogin(session);
+        if (session.getAttribute(UserRESTService.USER_KEY) == null) {
+            throw new IllegalArgumentException(ARGMESSAGE);
+        }
         sCart.addDeviceToCart(deviceId, quantity);
         return new ResultDTO(ResultType.SUCCESS, "Successfully added to the cart device with ID: " + deviceId + " quantity: " + quantity);
     }
@@ -41,7 +44,9 @@ public class CartRESTService implements Serializable {
     @Path("/remove/{deviceId}/{quantity}")
     public ResultDTO removeFromCart(@Context HttpServletRequest request, @PathParam("deviceId") String deviceId, @PathParam("quantity") Integer quantity) {
         HttpSession session = request.getSession(true);
-        checkLogin(session);
+        if (session.getAttribute(UserRESTService.USER_KEY) == null) {
+            throw new IllegalArgumentException(ARGMESSAGE);
+        }
         sCart.removeDeviceFromCart(deviceId, quantity);
         return new ResultDTO(ResultType.SUCCESS, "Successfully removed from cart device with ID: " + deviceId + "  quantity: " + quantity);
     }
@@ -50,14 +55,11 @@ public class CartRESTService implements Serializable {
     @Path("/buy")
     public ResultDTO buyCart(@Context HttpServletRequest request) {
         HttpSession session = request.getSession(true);
-        checkLogin(session);
+        if (session.getAttribute(UserRESTService.USER_KEY) == null) {
+            throw new IllegalArgumentException(ARGMESSAGE);
+        }
         sCart.buyCart();
         return new ResultDTO(ResultType.SUCCESS, "Cart is bought.");
     }
 
-    private static void checkLogin(HttpSession session) {
-        if (session.getAttribute(UserRESTService.USER_KEY) == null) {
-            throw new IllegalArgumentException("You are not logged in!");
-        }
-    }
 }

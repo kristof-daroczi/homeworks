@@ -1,0 +1,14 @@
+{
+"username": "troller",
+"password": "Password3",
+"email": "kiskutya@gmail.com",
+"firstname": null,
+"lastname": null,
+"address": "0123 miska",
+"phone": "06303245896",
+"sex": null,
+"dateOfBirth": null,
+"registrationDate": 1224043200000,
+"lastModifiedDate": 1224043200000,
+"admin": true
+ }

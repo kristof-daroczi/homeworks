@@ -21,7 +21,7 @@ public class DeviceDB implements Serializable {
 
     public DeviceEntity addDevice(DeviceEntity newDevice) {
         String randomUUID = UUID.randomUUID().toString();
-        newDevice.setCount(0);
+        newDevice.setCount(10);
         newDevice.setId(randomUUID);
         devices.put(newDevice.getId(), newDevice);
         return devices.get(newDevice.getId());

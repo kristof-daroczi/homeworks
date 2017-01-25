@@ -64,11 +64,11 @@ public class UserRESTService implements Serializable {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public ResultDTO addUser(@Context HttpServletRequest request, UserEntity newUser) {
-        HttpSession session = request.getSession(true);
+        HttpSession session = request.getSession();
         if (session.getAttribute(UserRESTService.USER_KEY) == null) {
             throw new IllegalArgumentException("You are not logged in!");
         }
-        UserEntity actUser = (UserEntity) session.getAttribute(UserRESTService.USER_KEY);
+        UserEntity actUser = (UserEntity) session.getAttribute(USER_KEY);
         if (!actUser.isAdmin()) {
             throw new IllegalStateException("You don't have the right permission to do this.(Admin=false)");
         }
@@ -80,14 +80,22 @@ public class UserRESTService implements Serializable {
     @Consumes(MediaType.APPLICATION_JSON)
     public ResultDTO deleteUser(@Context HttpServletRequest request, UserEntity user) {
         HttpSession session = request.getSession(true);
-        if (session.getAttribute(UserRESTService.USER_KEY) == null) {
+        if (session.getAttribute(USER_KEY) == null) {
             throw new IllegalArgumentException("You are not logged in!");
         }
-        UserEntity actUser = (UserEntity) session.getAttribute(UserRESTService.USER_KEY);
+        UserEntity actUser = (UserEntity) session.getAttribute(USER_KEY);
         if (!actUser.isAdmin()) {
             throw new IllegalStateException("You don't have the right permission to do this.(Admin=false)");
         }
         userDB.deleteUser(user);
+        return new ResultDTO(ResultType.SUCCESS, user);
+    }
+
+    @POST
+    @Path("/logout")
+    public ResultDTO logout(@Context HttpServletRequest request) {
+        UserEntity user = (UserEntity) request.getSession().getAttribute(USER_KEY);
+        request.getSession().invalidate();
         return new ResultDTO(ResultType.SUCCESS, user);
     }
 }
