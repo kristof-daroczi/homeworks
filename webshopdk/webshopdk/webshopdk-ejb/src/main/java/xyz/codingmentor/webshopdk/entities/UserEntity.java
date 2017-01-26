@@ -181,17 +181,6 @@ public class UserEntity implements Serializable {
     public int hashCode() {
         int hash = 5;
         hash = 71 * hash + Objects.hashCode(this.username);
-        hash = 71 * hash + Objects.hashCode(this.password);
-        hash = 71 * hash + Objects.hashCode(this.firstname);
-        hash = 71 * hash + Objects.hashCode(this.lastname);
-        hash = 71 * hash + Objects.hashCode(this.address);
-        hash = 71 * hash + Objects.hashCode(this.phone);
-        hash = 71 * hash + Objects.hashCode(this.email);
-        hash = 71 * hash + Objects.hashCode(this.sex);
-        hash = 71 * hash + Objects.hashCode(this.registrationDate);
-        hash = 71 * hash + Objects.hashCode(this.lastModifiedDate);
-        hash = 71 * hash + Objects.hashCode(this.dateOfBirth);
-        hash = 71 * hash + (this.admin ? 1 : 0);
         return hash;
     }
 
@@ -207,40 +196,7 @@ public class UserEntity implements Serializable {
             return false;
         }
         final UserEntity other = (UserEntity) obj;
-        if (!Objects.equals(this.admin, other.admin)) {
-            return false;
-        }
         if (!Objects.equals(this.username, other.username)) {
-            return false;
-        }
-        if (!Objects.equals(this.password, other.password)) {
-            return false;
-        }
-        if (!Objects.equals(this.firstname, other.firstname)) {
-            return false;
-        }
-        if (!Objects.equals(this.lastname, other.lastname)) {
-            return false;
-        }
-        if (!Objects.equals(this.address, other.address)) {
-            return false;
-        }
-        if (!Objects.equals(this.phone, other.phone)) {
-            return false;
-        }
-        if (!Objects.equals(this.email, other.email)) {
-            return false;
-        }
-        if (this.sex != other.sex) {
-            return false;
-        }
-        if (!Objects.equals(this.registrationDate, other.registrationDate)) {
-            return false;
-        }
-        if (!Objects.equals(this.lastModifiedDate, other.lastModifiedDate)) {
-            return false;
-        }
-        if (!Objects.equals(this.dateOfBirth, other.dateOfBirth)) {
             return false;
         }
         return true;

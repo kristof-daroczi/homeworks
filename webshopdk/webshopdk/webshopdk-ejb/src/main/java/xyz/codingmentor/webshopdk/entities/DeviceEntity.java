@@ -103,11 +103,6 @@ public class DeviceEntity implements Serializable {
     public int hashCode() {
         int hash = 3;
         hash = 97 * hash + Objects.hashCode(this.id);
-        hash = 97 * hash + Objects.hashCode(this.manufacturer);
-        hash = 97 * hash + Objects.hashCode(this.type);
-        hash = 97 * hash + this.price;
-        hash = 97 * hash + Objects.hashCode(this.color);
-        hash = 97 * hash + Objects.hashCode(this.count);
         return hash;
     }
 
@@ -122,23 +117,8 @@ public class DeviceEntity implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final DeviceEntity other = (DeviceEntity) obj;
-        if (this.price != other.price) {
-            return false;
-        }
+        final DeviceEntity other = (DeviceEntity) obj;   
         if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.type, other.type)) {
-            return false;
-        }
-        if (this.manufacturer != other.manufacturer) {
-            return false;
-        }
-        if (this.color != other.color) {
-            return false;
-        }
-        if (!Objects.equals(this.count, other.count)) {
             return false;
         }
         return true;

@@ -32,7 +32,7 @@ public class DeviceRESTService implements Serializable {
     private DeviceDB deviceDB;
 
     @GET
-    @Path("/deviceId")
+    @Path("/{deviceId}")
     public DeviceEntity getDeviceById(@PathParam("deviceId") String deviceId) {
         return deviceDB.getDevice(deviceId);
     }

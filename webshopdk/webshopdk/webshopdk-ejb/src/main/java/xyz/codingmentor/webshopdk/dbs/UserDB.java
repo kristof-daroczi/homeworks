@@ -17,7 +17,7 @@ import xyz.codingmentor.webshopdk.entities.UserEntity;
 @Singleton
 public class UserDB implements Serializable {
 
-    private final transient Map<String, UserEntity> users= new HashMap<>();
+    private final Map<String, UserEntity> users= new HashMap<>();
  
     public UserEntity addUser(UserEntity newuser) {
         Date now = new Date();

@@ -17,7 +17,7 @@ import xyz.codingmentor.webshopdk.entities.DeviceEntity;
 @Singleton
 public class DeviceDB implements Serializable {
 
-    private final transient Map<String, DeviceEntity> devices = new HashMap<>();
+    private final Map<String, DeviceEntity> devices = new HashMap<>();
 
     public DeviceEntity addDevice(DeviceEntity newDevice) {
         String randomUUID = UUID.randomUUID().toString();
