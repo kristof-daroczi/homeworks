@@ -1,9 +1,8 @@
 package xyz.codingmentor.web.jpa.hw.war.service;
 
-import java.util.ArrayList;
-import java.util.List;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -16,14 +15,13 @@ import xyz.codingmentor.web.jpa.hw.ejb.api.CRUDService;
 import xyz.codingmentor.web.jpa.hw.ejb.api.CRUDServiceQualifier;
 import xyz.codingmentor.web.jpa.hw.ejb.api.EntityModel;
 import xyz.codingmentor.web.jpa.hw.ejb.entity.CategoryEntity;
-import xyz.codingmentor.web.jpa.hw.ejb.entity.FilmEntity;
 import xyz.codingmentor.web.jpa.hw.ejb.exception.RepositoryException;
 
 /**
  *
  * @author Krisz
  */
-@Path("category")
+@Path("categories")
 public class CategoryRESTService {
 
     @Inject
@@ -45,10 +43,24 @@ public class CategoryRESTService {
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findCategory(@PathParam("id") Integer id) throws RepositoryException {
-        categoryService.getEntityById(id);
-        return Response.ok(id).build();
+    public Response findCategoryById(@PathParam("id") Integer id) throws RepositoryException {
+        CategoryEntity category = categoryService.getEntityById(id);
+        return Response.ok(category).build();
     }
 
-  
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response updateCategory(CategoryEntity category) throws RepositoryException {
+        categoryService.updateEntity(category);
+        return Response.ok(category).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response removeCategoryById(@PathParam("id") Integer id) throws RepositoryException {
+        categoryService.removeEntity(id);
+        return Response.ok().build();
+    }
 }

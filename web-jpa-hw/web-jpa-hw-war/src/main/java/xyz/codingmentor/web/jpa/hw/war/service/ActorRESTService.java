@@ -14,53 +14,53 @@ import javax.ws.rs.core.Response;
 import xyz.codingmentor.web.jpa.hw.ejb.api.CRUDService;
 import xyz.codingmentor.web.jpa.hw.ejb.api.CRUDServiceQualifier;
 import xyz.codingmentor.web.jpa.hw.ejb.api.EntityModel;
-import xyz.codingmentor.web.jpa.hw.ejb.entity.FilmEntity;
+import xyz.codingmentor.web.jpa.hw.ejb.entity.ActorEntity;
 import xyz.codingmentor.web.jpa.hw.ejb.exception.RepositoryException;
 
 /**
  *
  * @author Krisz
  */
-@Path("films")
-public class FilmRESTService {
+@Path("actors")
+public class ActorRESTService {
 
     @Inject
-    @CRUDServiceQualifier(EntityModel.FILM)
-    private CRUDService<FilmEntity> filmService;
+    @CRUDServiceQualifier(EntityModel.ACTOR)
+    private CRUDService<ActorEntity> actorService;
 
-    public FilmRESTService() {
+    public ActorRESTService() {
         //empty on purpose
     }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createFilm(FilmEntity film) throws RepositoryException {
-        filmService.createEntity(film);
-        return Response.ok(film).build();
+    public Response createActor(ActorEntity actor) throws RepositoryException {
+        actorService.createEntity(actor);
+        return Response.ok(actor).build();
     }
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findFilmById(@PathParam("id") Integer id) throws RepositoryException {
-        FilmEntity film = filmService.getEntityById(id);
-        return Response.ok(film).build();
+    public Response findActorById(@PathParam("id") Integer id) throws RepositoryException {
+        ActorEntity actor = actorService.getEntityById(id);
+        return Response.ok(actor).build();
     }
 
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response updateFilm(FilmEntity film) throws RepositoryException {
-        filmService.updateEntity(film);
-        return Response.ok(film).build();
+    public Response updateActor(ActorEntity actor) throws RepositoryException {
+        actorService.updateEntity(actor);
+        return Response.ok(actor).build();
     }
 
     @DELETE
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response removeFilmById(@PathParam("id") Integer id) throws RepositoryException {
-        filmService.removeEntity(id);
+    public Response removeActorById(@PathParam("id") Integer id) throws RepositoryException {
+        actorService.removeEntity(id);
         return Response.ok().build();
     }
 }
