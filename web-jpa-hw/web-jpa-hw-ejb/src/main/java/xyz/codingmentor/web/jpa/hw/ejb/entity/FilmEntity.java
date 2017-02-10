@@ -4,11 +4,13 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -21,11 +23,11 @@ public class FilmEntity implements Serializable {
     @Id
     private Integer id;
     private String title;
-    @ManyToMany(mappedBy = "films", cascade = CascadeType.PERSIST)
+    @ManyToMany(mappedBy = "films", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<ActorEntity> actors;
-    @OneToMany(mappedBy = "film", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "film", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<TrailerEntity> trailers;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private CategoryEntity category;
 
     public FilmEntity() {
@@ -48,6 +50,7 @@ public class FilmEntity implements Serializable {
         this.title = title;
     }
 
+    @XmlTransient
     public List<ActorEntity> getActors() {
         return actors;
     }
@@ -56,6 +59,7 @@ public class FilmEntity implements Serializable {
         this.actors = actors;
     }
 
+    @XmlTransient
     public List<TrailerEntity> getTrailers() {
         return trailers;
     }
@@ -71,7 +75,5 @@ public class FilmEntity implements Serializable {
     public void setCategory(CategoryEntity category) {
         this.category = category;
     }
-    
-    
 
 }

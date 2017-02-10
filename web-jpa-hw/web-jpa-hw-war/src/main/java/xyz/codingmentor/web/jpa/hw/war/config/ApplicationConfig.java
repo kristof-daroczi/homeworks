@@ -22,8 +22,10 @@ public class ApplicationConfig extends Application {
         resources.add(xyz.codingmentor.web.jpa.hw.war.exception.GeneralExceptionMapper.class);
         resources.add(xyz.codingmentor.web.jpa.hw.war.exception.RepositoryExceptionMapper.class);
         resources.add(xyz.codingmentor.web.jpa.hw.war.service.ActorRESTService.class);
+        resources.add(xyz.codingmentor.web.jpa.hw.war.service.AdderRESTService.class);
         resources.add(xyz.codingmentor.web.jpa.hw.war.service.CategoryRESTService.class);
         resources.add(xyz.codingmentor.web.jpa.hw.war.service.FilmRESTService.class);
+        resources.add(xyz.codingmentor.web.jpa.hw.war.service.QueryRESTService.class);
         resources.add(xyz.codingmentor.web.jpa.hw.war.service.TrailerRESTService.class);
     }
     

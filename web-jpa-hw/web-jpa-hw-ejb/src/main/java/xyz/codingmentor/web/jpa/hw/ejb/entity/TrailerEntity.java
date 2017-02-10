@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -28,7 +29,7 @@ public class TrailerEntity implements Serializable {
     private String title;
     @Temporal(TemporalType.DATE)
     private Date publishDate;
-    @ManyToOne(cascade = {CascadeType.PERSIST})
+    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private FilmEntity film;
 
     public TrailerEntity() {

@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,7 +22,7 @@ public class CategoryEntity implements Serializable {
     @Id
     private Integer id;
     private String name;
-    @OneToMany(mappedBy = "category", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     private List<FilmEntity> films;
 
     public CategoryEntity() {

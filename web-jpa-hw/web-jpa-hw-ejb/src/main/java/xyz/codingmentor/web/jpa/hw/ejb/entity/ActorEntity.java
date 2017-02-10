@@ -4,11 +4,13 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -23,7 +25,7 @@ public class ActorEntity implements Serializable {
     private String firstname;
     private String lastname;
     private String nationality;
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
     @JoinTable(name = "jnd_actor_film",
             joinColumns = @JoinColumn(name = "actor_fk"),
             inverseJoinColumns = @JoinColumn(name = "film_fk"))
@@ -64,7 +66,7 @@ public class ActorEntity implements Serializable {
     public void setNationality(String nationality) {
         this.nationality = nationality;
     }
-
+    @XmlTransient
     public List<FilmEntity> getFilms() {
         return films;
     }

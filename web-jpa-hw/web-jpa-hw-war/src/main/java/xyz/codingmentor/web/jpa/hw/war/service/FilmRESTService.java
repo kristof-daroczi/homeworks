@@ -27,7 +27,8 @@ public class FilmRESTService {
     @Inject
     @CRUDServiceQualifier(EntityModel.FILM)
     private CRUDService<FilmEntity> filmService;
-
+    
+  
     public FilmRESTService() {
         //empty on purpose
     }
@@ -63,4 +64,6 @@ public class FilmRESTService {
         filmService.removeEntity(id);
         return Response.ok().build();
     }
+    
+ 
 }
