@@ -2,7 +2,6 @@ package xyz.codingmentor.web.jpa.hw.war.config;
 
 import java.util.Set;
 import javax.ws.rs.core.Application;
-import xyz.codingmentor.web.jpa.hw.war.service.CategoryRESTService;
 
 /**
  *

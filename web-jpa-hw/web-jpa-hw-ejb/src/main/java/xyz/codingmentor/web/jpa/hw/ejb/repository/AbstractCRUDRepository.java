@@ -10,13 +10,13 @@ import xyz.codingmentor.web.jpa.hw.ejb.api.CRUDRepository;
  */
 public abstract class AbstractCRUDRepository<T> implements CRUDRepository<T> {
 
-    protected abstract Class<T> getEntityClass();
-
-    protected abstract EntityManager getEntityManager();
-
     public AbstractCRUDRepository() {
         //empty on purpose
     }
+
+    protected abstract Class<T> getEntityClass();
+
+    protected abstract EntityManager getEntityManager();
 
     @Override
     public void persist(T entity) {

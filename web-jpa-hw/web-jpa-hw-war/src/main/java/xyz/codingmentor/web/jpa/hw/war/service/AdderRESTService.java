@@ -21,22 +21,21 @@ public class AdderRESTService {
     public AdderRESTService() {
         //empty on purpose
     }
-    //http://localhost:8080/web-jpa-hw-war/rest/adder/categorytofilm?filmId=1&actorId=1
+
     @GET
     @Path("categorytofilm")
     public Response addCategoryToFilm(@QueryParam("filmId") Integer filmId, @QueryParam("actorId") Integer actorId) throws RepositoryException {
         adderService.addCategoryToFilm(filmId, actorId);
         return Response.ok().build();
     }
-    
-    //http://localhost:8080/web-jpa-hw-war/rest/adder/trailertofilm?filmId=1&trailerId=1
+
     @GET
     @Path("trailertofilm")
     public Response addTrailerToFilm(@QueryParam("filmId") Integer filmId, @QueryParam("trailerId") Integer trailerId) throws RepositoryException {
         adderService.addTrailerToFilm(filmId, trailerId);
         return Response.ok().build();
     }
-    //http://localhost:8080/web-jpa-hw-war/rest/adder/filmtoactor?filmId=1&actorId=1
+
     @GET
     @Path("filmtoactor")
     public Response addFilmtoActor(@QueryParam("filmId") Integer filmId, @QueryParam("actorId") Integer actorId) throws RepositoryException {

@@ -14,10 +14,10 @@ public interface IQueryService {
 
     List<FilmEntity> getFilmsbyTitle(String title) throws RepositoryException;
 
-    List<ActorEntity> getActorsByFilm(String filmTitle) throws RepositoryException;
+    List<ActorEntity> getActorsByName(String firstname,String lastname) throws RepositoryException;
 
     List<ActorEntity> getActorsByNationality(String nationality) throws RepositoryException;
 
-    List<TrailerEntity> getTrailersbyFilm(String filmTitle) throws RepositoryException;
+    List<TrailerEntity> getTrailersbyFilm(Integer filmId) throws RepositoryException;
 
 }
