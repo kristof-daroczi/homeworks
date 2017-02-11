@@ -33,11 +33,10 @@ public class SchedulerChecker {
         this.flightService = flightService;
     }
 
-    private Date getPlusOneHourDate() {
+    private static Date getPlusOneHourDate() {
         GregorianCalendar date = new GregorianCalendar();
         date.add(GregorianCalendar.HOUR_OF_DAY, 1);
-        Date returnDate = date.getTime();
-        return returnDate;
+        return date.getTime();
     }
 
     @Schedule(hour = "*")

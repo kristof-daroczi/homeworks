@@ -12,4 +12,20 @@
         <module>jms-provider-ejb</module>
         <module>jms-provider-web</module>
     </modules>
+    <profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <sonar.login>kristof.daroczi</sonar.login>
+                <sonar.password>0krisz</sonar.password>
+                <!-- Optional URL to server. Default value is http://localhost:9000 -->
+                <sonar.host.url>
+                    http://sonar.codingmentor.xyz:9000
+                </sonar.host.url>
+            </properties>
+        </profile>  
+    </profiles>
 </project>
